@@ -91,31 +91,15 @@ header {
 header::after {
     content: '';
     position: absolute;
-    top: 50px;
-    right: 15%;
     width: 120px;
     height: 120px;
     background-image: url('panda.jpg');
     background-size: cover;
     background-position: center;
     border-radius: 50%;
-    transform-origin: 50% -50px;
-    animation: pandaSwing 3s ease-in-out infinite;
+    animation: pandaMove 10s ease-in-out infinite;
     opacity: 0.9;
     filter: drop-shadow(3px 3px 8px rgba(0,0,0,0.4));
-}
-
-.swing-rope {
-    position: absolute;
-    top: 0;
-    right: calc(15% + 58px);
-    width: 4px;
-    height: 50px;
-    background: linear-gradient(to bottom, #8B4513, #A0522D);
-    transform-origin: 50% 0;
-    animation: pandaSwing 3s ease-in-out infinite;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-    border-radius: 2px;
 }
 
 @keyframes sakuraFall {
@@ -138,16 +122,10 @@ header::after {
     }
 }
 
-@keyframes pandaSwing {
-    0% {
-        transform: rotate(-15deg);
-    }
-    50% {
-        transform: rotate(15deg);
-    }
-    100% {
-        transform: rotate(-15deg);
-    }
+@keyframes pandaMove {
+    0% { top: 10%; right: 10%; transform: scale(1); }
+    50% { top: 10%; right: 85%; transform: scale(1.05); }
+    100% { top: 10%; right: 10%; transform: scale(1); }
 }
 
 header h1 {
