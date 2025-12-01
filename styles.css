@@ -67,22 +67,25 @@ header::before {
 header::after {
     content: '';
     position: absolute;
-    width: 60px;
-    height: 100px;
+    width: 100px;
+    height: 160px;
     background:
-        radial-gradient(circle 12px at 30% 20%, #000 99%, transparent 100%),
-        radial-gradient(circle 12px at 70% 20%, #000 99%, transparent 100%),
-        radial-gradient(circle 25px at 50% 35%, #fff 99%, transparent 100%),
-        radial-gradient(circle 5px at 42% 32%, #000 99%, transparent 100%),
-        radial-gradient(circle 5px at 58% 32%, #000 99%, transparent 100%),
-        radial-gradient(ellipse 30px 35px at 50% 65%, #fff 99%, transparent 100%),
-        radial-gradient(circle 10px at 25% 85%, #000 99%, transparent 100%),
-        radial-gradient(circle 10px at 75% 85%, #000 99%, transparent 100%),
-        radial-gradient(ellipse 8px 12px at 20% 75%, #000 99%, transparent 100%),
-        radial-gradient(ellipse 8px 12px at 80% 75%, #000 99%, transparent 100%);
+        radial-gradient(circle 20px at 28% 18%, #000 99%, transparent 100%),
+        radial-gradient(circle 20px at 72% 18%, #000 99%, transparent 100%),
+        radial-gradient(circle 40px at 50% 35%, #fff 99%, transparent 100%),
+        radial-gradient(circle 8px at 43% 33%, #000 99%, transparent 100%),
+        radial-gradient(circle 8px at 57% 33%, #000 99%, transparent 100%),
+        radial-gradient(circle 3px at 50% 40%, #000 99%, transparent 100%),
+        radial-gradient(ellipse 6px 4px at 45% 43%, #FF69B4 99%, transparent 100%),
+        radial-gradient(ellipse 6px 4px at 55% 43%, #FF69B4 99%, transparent 100%),
+        radial-gradient(ellipse 50px 60px at 50% 70%, #fff 99%, transparent 100%),
+        radial-gradient(circle 16px at 22% 88%, #000 99%, transparent 100%),
+        radial-gradient(circle 16px at 78% 88%, #000 99%, transparent 100%),
+        radial-gradient(ellipse 12px 18px at 18% 78%, #000 99%, transparent 100%),
+        radial-gradient(ellipse 12px 18px at 82% 78%, #000 99%, transparent 100%);
     animation: pandaMove 10s ease-in-out infinite;
-    opacity: 0.6;
-    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+    opacity: 0.85;
+    filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.3));
 }
 
 @keyframes sakuraFloat {
@@ -179,11 +182,12 @@ h2::after {
 }
 
 .label {
-    font-weight: bold;
+    font-weight: 700;
     color: #FF69B4;
     margin-right: 10px;
     font-family: 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.05em;
+    font-size: 1.1em;
 }
 
 .value {
