@@ -129,7 +129,7 @@ header::after {
         transform: scale(1);
     }
     50% {
-        top: 60%;
+        top: 40%;
         right: 50%;
         transform: scale(1.1);
     }
