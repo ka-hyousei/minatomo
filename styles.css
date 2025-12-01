@@ -48,7 +48,7 @@ body::after {
 
 /* ヘッダー */
 header {
-    background: linear-gradient(135deg, #FFB7D5 0%, #FFC1CC 50%, #FFE6F0 100%);
+    background: linear-gradient(135deg, #4A90E2 0%, #5DA5E8 50%, #A8D8FF 100%);
     color: white;
     text-align: center;
     padding: 40px 20px;
