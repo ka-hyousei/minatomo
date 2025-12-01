@@ -68,9 +68,8 @@ header::after {
     content: '🐼';
     position: absolute;
     font-size: 4em;
-    bottom: 20px;
-    right: 30px;
-    animation: pandaBounce 2s ease-in-out infinite;
+    opacity: 0.4;
+    animation: pandaMove 10s ease-in-out infinite;
 }
 
 @keyframes sakuraFloat {
@@ -81,9 +80,12 @@ header::after {
     100% { top: -50px; left: 10%; transform: rotate(360deg); }
 }
 
-@keyframes pandaBounce {
-    0%, 100% { transform: translateY(0px) scale(1); }
-    50% { transform: translateY(-10px) scale(1.05); }
+@keyframes pandaMove {
+    0% { top: 20%; right: 10%; transform: scale(1); }
+    25% { top: 60%; right: 70%; transform: scale(1.1); }
+    50% { top: 40%; right: 30%; transform: scale(0.9); }
+    75% { top: 70%; right: 80%; transform: scale(1.05); }
+    100% { top: 20%; right: 10%; transform: scale(1); }
 }
 
 header h1 {
