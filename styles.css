@@ -65,11 +65,24 @@ header::before {
 }
 
 header::after {
-    content: '🐼';
+    content: '';
     position: absolute;
-    font-size: 4em;
-    opacity: 0.4;
+    width: 60px;
+    height: 100px;
+    background:
+        radial-gradient(circle 12px at 30% 20%, #000 99%, transparent 100%),
+        radial-gradient(circle 12px at 70% 20%, #000 99%, transparent 100%),
+        radial-gradient(circle 25px at 50% 35%, #fff 99%, transparent 100%),
+        radial-gradient(circle 5px at 42% 32%, #000 99%, transparent 100%),
+        radial-gradient(circle 5px at 58% 32%, #000 99%, transparent 100%),
+        radial-gradient(ellipse 30px 35px at 50% 65%, #fff 99%, transparent 100%),
+        radial-gradient(circle 10px at 25% 85%, #000 99%, transparent 100%),
+        radial-gradient(circle 10px at 75% 85%, #000 99%, transparent 100%),
+        radial-gradient(ellipse 8px 12px at 20% 75%, #000 99%, transparent 100%),
+        radial-gradient(ellipse 8px 12px at 80% 75%, #000 99%, transparent 100%);
     animation: pandaMove 10s ease-in-out infinite;
+    opacity: 0.6;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
 }
 
 @keyframes sakuraFloat {
@@ -136,18 +149,29 @@ h2::after {
 }
 
 .info-card {
-    background: linear-gradient(135deg, #f6f8fb 0%, #e9ecef 100%);
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #FFF0F5 0%, #FFF8F0 100%);
+    border: 3px solid #FFD4E5;
+    border-radius: 25px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
 }
 
 .info-item {
     margin-bottom: 20px;
-    font-size: 1.2em;
+    font-size: 1.15em;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    padding: 15px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(255, 182, 193, 0.15);
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 182, 193, 0.25);
 }
 
 .info-item:last-child {
