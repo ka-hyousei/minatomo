@@ -128,14 +128,24 @@ header::after {
         right: 10%;
         transform: scale(1);
     }
+    25% {
+        top: 40%;
+        right: 50%;
+        transform: scale(1.1);
+    }
     50% {
+        top: 10%;
+        right: 85%;
+        transform: scale(1);
+    }
+    75% {
         top: 40%;
         right: 50%;
         transform: scale(1.1);
     }
     100% {
         top: 10%;
-        right: 85%;
+        right: 10%;
         transform: scale(1);
     }
 }
