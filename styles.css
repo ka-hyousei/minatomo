@@ -156,6 +156,8 @@ h2::after {
     font-weight: bold;
     color: #FF69B4;
     margin-right: 10px;
+    font-family: 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+    letter-spacing: 0.03em;
 }
 
 .value {
