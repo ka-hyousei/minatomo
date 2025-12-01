@@ -157,14 +157,25 @@ header::after {
 header h1 {
     font-size: 2.5em;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
     font-family: 'SimSun', 'NSimSun', 'STSong', 'Yu Mincho', '游明朝', 'MS Mincho', serif;
+    background: rgba(0, 0, 0, 0.4);
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
 }
 
 .subtitle {
     font-size: 1.3em;
-    opacity: 0.95;
+    opacity: 1;
     font-family: 'SimSun', 'NSimSun', 'STSong', 'Yu Mincho', '游明朝', 'MS Mincho', serif;
+    background: rgba(0, 0, 0, 0.4);
+    display: inline-block;
+    padding: 8px 24px;
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 /* メインコンテンツ */
@@ -515,10 +526,12 @@ footer::before {
 
     header h1 {
         font-size: 1.8em;
+        padding: 10px 24px;
     }
 
     .subtitle {
         font-size: 1.1em;
+        padding: 6px 20px;
     }
 
     /* モバイルでパンダサイズを調整 */
@@ -586,10 +599,12 @@ footer::before {
 
     header h1 {
         font-size: 1.6em;
+        padding: 8px 20px;
     }
 
     .subtitle {
         font-size: 1em;
+        padding: 6px 16px;
     }
 
     /* 小さい画面でパンダをさらに縮小 */
