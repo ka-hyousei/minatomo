@@ -8,8 +8,13 @@
 </head>
 <body>
     <div class="container">
-        <div class="weather-bar" id="weather-bar">
-            <span class="weather-loading">天気情報を取得中...</span>
+        <div class="weather-bar">
+            <div class="datetime-section" id="datetime-section">
+                <span class="datetime-loading">...</span>
+            </div>
+            <div class="weather-section" id="weather-section">
+                <span class="weather-loading">天気情報を取得中...</span>
+            </div>
         </div>
         <header>
             <h1>みんなの日中交流会</h1>
@@ -149,6 +154,28 @@
     </div>
 
     <script>
+        // 曜日の配列
+        const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
+
+        // 日時を更新する関数
+        function updateDateTime() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = now.getMonth() + 1;
+            const day = now.getDate();
+            const weekday = weekdays[now.getDay()];
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            const datetimeSection = document.getElementById('datetime-section');
+            datetimeSection.innerHTML = `
+                <span class="datetime-date">${year}年${month}月${day}日</span>
+                <span class="datetime-weekday">(${weekday})</span>
+                <span class="datetime-time">${hours}:${minutes}:${seconds}</span>
+            `;
+        }
+
         // 天気コードから天気アイコンと説明を取得
         function getWeatherInfo(code) {
             const weatherCodes = {
@@ -196,8 +223,8 @@
                 const current = data.current;
                 const weatherInfo = getWeatherInfo(current.weather_code);
 
-                const weatherBar = document.getElementById('weather-bar');
-                weatherBar.innerHTML = `
+                const weatherSection = document.getElementById('weather-section');
+                weatherSection.innerHTML = `
                     <span class="weather-location">📍 池袋</span>
                     <span class="weather-icon">${weatherInfo.icon}</span>
                     <span class="weather-temp">${Math.round(current.temperature_2m)}°C</span>
@@ -205,14 +232,17 @@
                     <span class="weather-humidity">💧${current.relative_humidity_2m}%</span>
                 `;
             } catch (error) {
-                const weatherBar = document.getElementById('weather-bar');
-                weatherBar.innerHTML = '<span class="weather-error">天気情報を取得できませんでした</span>';
+                const weatherSection = document.getElementById('weather-section');
+                weatherSection.innerHTML = '<span class="weather-error">天気情報を取得できませんでした</span>';
             }
         }
 
-        // ページ読み込み時に天気を取得
+        // ページ読み込み時に初期化
+        updateDateTime();
         fetchWeather();
-        // 10分ごとに更新
+        // 日時は毎秒更新
+        setInterval(updateDateTime, 1000);
+        // 天気は10分ごとに更新
         setInterval(fetchWeather, 600000);
     </script>
 </body>

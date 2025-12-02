@@ -57,11 +57,45 @@ body::after {
     padding: 12px 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
+    justify-content: space-between;
     font-size: 0.95em;
     font-weight: 500;
     flex-wrap: wrap;
+    gap: 15px;
+}
+
+.datetime-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.datetime-date {
+    font-weight: 600;
+}
+
+.datetime-weekday {
+    font-weight: 600;
+    color: #fbbf24;
+}
+
+.datetime-time {
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 1.1em;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.datetime-loading {
+    opacity: 0.8;
+}
+
+.weather-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .weather-location {
@@ -550,8 +584,17 @@ footer::before {
 @media (max-width: 768px) {
     .weather-bar {
         padding: 10px 16px;
-        gap: 12px;
+        gap: 10px;
         font-size: 0.9em;
+        justify-content: center;
+    }
+
+    .datetime-section {
+        gap: 6px;
+    }
+
+    .weather-section {
+        gap: 8px;
     }
 
     main {
@@ -625,8 +668,22 @@ footer::before {
 @media (max-width: 480px) {
     .weather-bar {
         padding: 8px 12px;
-        gap: 8px;
-        font-size: 0.85em;
+        gap: 6px;
+        font-size: 0.8em;
+        flex-direction: column;
+    }
+
+    .datetime-section {
+        gap: 5px;
+    }
+
+    .datetime-time {
+        font-size: 1em;
+        padding: 2px 6px;
+    }
+
+    .weather-section {
+        gap: 6px;
     }
 
     .weather-icon {
