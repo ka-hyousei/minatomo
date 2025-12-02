@@ -653,6 +653,10 @@ h2::after {
     margin-bottom: 40px;
 }
 
+.gachi-chuka h2::before {
+    content: '🍜';
+}
+
 .restaurant-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -661,8 +665,8 @@ h2::after {
 }
 
 .restaurant-card {
-    background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
-    border: 2px solid #fecaca;
+    background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+    border: 2px solid #e0f2fe;
     border-radius: 16px;
     padding: 24px;
     position: relative;
@@ -672,8 +676,8 @@ h2::after {
 
 .restaurant-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(239, 68, 68, 0.15);
-    border-color: #f87171;
+    box-shadow: 0 12px 24px rgba(59, 130, 246, 0.15);
+    border-color: #93c5fd;
 }
 
 .restaurant-name {
@@ -704,7 +708,7 @@ h2::after {
 .map-link {
     display: inline-block;
     padding: 8px 16px;
-    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
     color: white;
     text-decoration: none;
     border-radius: 8px;
@@ -715,7 +719,7 @@ h2::after {
 
 .map-link:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 /* 説明セクション */
