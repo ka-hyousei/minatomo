@@ -13,7 +13,40 @@
                 <span class="datetime-loading">...</span>
             </div>
             <div class="weather-section" id="weather-section">
-                <span class="weather-loading">天気情報を取得中...</span>
+                <select id="location-select" class="location-select">
+                    <optgroup label="関東">
+                        <option value="nishi-ikebukuro" selected>西池袋公園</option>
+                        <option value="tokyo">東京</option>
+                        <option value="yokohama">横浜</option>
+                        <option value="saitama">さいたま</option>
+                        <option value="chiba">千葉</option>
+                    </optgroup>
+                    <optgroup label="北海道・東北">
+                        <option value="sapporo">札幌</option>
+                        <option value="sendai">仙台</option>
+                    </optgroup>
+                    <optgroup label="中部">
+                        <option value="nagoya">名古屋</option>
+                        <option value="niigata">新潟</option>
+                        <option value="kanazawa">金沢</option>
+                    </optgroup>
+                    <optgroup label="関西">
+                        <option value="osaka">大阪</option>
+                        <option value="kyoto">京都</option>
+                        <option value="kobe">神戸</option>
+                    </optgroup>
+                    <optgroup label="中国・四国">
+                        <option value="hiroshima">広島</option>
+                        <option value="takamatsu">高松</option>
+                    </optgroup>
+                    <optgroup label="九州・沖縄">
+                        <option value="fukuoka">福岡</option>
+                        <option value="naha">那覇</option>
+                    </optgroup>
+                </select>
+                <div class="weather-info" id="weather-info">
+                    <span class="weather-loading">天気情報を取得中...</span>
+                </div>
             </div>
         </div>
         <header>
@@ -157,6 +190,30 @@
         // 曜日の配列
         const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
 
+        // 地域データ（座標と表示名）
+        const locations = {
+            'nishi-ikebukuro': { name: '西池袋公園', lat: 35.7295, lon: 139.7109 },
+            'tokyo': { name: '東京', lat: 35.6762, lon: 139.6503 },
+            'yokohama': { name: '横浜', lat: 35.4437, lon: 139.6380 },
+            'saitama': { name: 'さいたま', lat: 35.8617, lon: 139.6455 },
+            'chiba': { name: '千葉', lat: 35.6073, lon: 140.1063 },
+            'sapporo': { name: '札幌', lat: 43.0618, lon: 141.3545 },
+            'sendai': { name: '仙台', lat: 38.2682, lon: 140.8694 },
+            'nagoya': { name: '名古屋', lat: 35.1815, lon: 136.9066 },
+            'niigata': { name: '新潟', lat: 37.9026, lon: 139.0236 },
+            'kanazawa': { name: '金沢', lat: 36.5944, lon: 136.6256 },
+            'osaka': { name: '大阪', lat: 34.6937, lon: 135.5023 },
+            'kyoto': { name: '京都', lat: 35.0116, lon: 135.7681 },
+            'kobe': { name: '神戸', lat: 34.6901, lon: 135.1956 },
+            'hiroshima': { name: '広島', lat: 34.3853, lon: 132.4553 },
+            'takamatsu': { name: '高松', lat: 34.3401, lon: 134.0434 },
+            'fukuoka': { name: '福岡', lat: 33.5904, lon: 130.4017 },
+            'naha': { name: '那覇', lat: 26.2124, lon: 127.6809 }
+        };
+
+        // 現在選択中の地域
+        let currentLocation = 'nishi-ikebukuro';
+
         // 日時を更新する関数
         function updateDateTime() {
             const now = new Date();
@@ -211,11 +268,10 @@
             return weatherCodes[code] || { icon: '🌡️', desc: '不明' };
         }
 
-        // 池袋の天気を取得
+        // 天気を取得
         async function fetchWeather() {
-            const lat = 35.7295;
-            const lon = 139.7109;
-            const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code,relative_humidity_2m&timezone=Asia/Tokyo`;
+            const location = locations[currentLocation];
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${location.lat}&longitude=${location.lon}&current=temperature_2m,weather_code,relative_humidity_2m&timezone=Asia/Tokyo`;
 
             try {
                 const response = await fetch(url);
@@ -223,27 +279,47 @@
                 const current = data.current;
                 const weatherInfo = getWeatherInfo(current.weather_code);
 
-                const weatherSection = document.getElementById('weather-section');
-                weatherSection.innerHTML = `
-                    <span class="weather-location">📍 池袋</span>
+                const weatherInfoEl = document.getElementById('weather-info');
+                weatherInfoEl.innerHTML = `
                     <span class="weather-icon">${weatherInfo.icon}</span>
                     <span class="weather-temp">${Math.round(current.temperature_2m)}°C</span>
                     <span class="weather-desc">${weatherInfo.desc}</span>
                     <span class="weather-humidity">💧${current.relative_humidity_2m}%</span>
                 `;
             } catch (error) {
-                const weatherSection = document.getElementById('weather-section');
-                weatherSection.innerHTML = '<span class="weather-error">天気情報を取得できませんでした</span>';
+                const weatherInfoEl = document.getElementById('weather-info');
+                weatherInfoEl.innerHTML = '<span class="weather-error">取得エラー</span>';
             }
         }
 
+        // 地域変更時の処理
+        function onLocationChange() {
+            const select = document.getElementById('location-select');
+            currentLocation = select.value;
+            // 選択をローカルストレージに保存
+            localStorage.setItem('weatherLocation', currentLocation);
+            fetchWeather();
+        }
+
         // ページ読み込み時に初期化
-        updateDateTime();
-        fetchWeather();
-        // 日時は毎秒更新
-        setInterval(updateDateTime, 1000);
-        // 天気は10分ごとに更新
-        setInterval(fetchWeather, 600000);
+        document.addEventListener('DOMContentLoaded', function() {
+            // ローカルストレージから保存された地域を復元
+            const savedLocation = localStorage.getItem('weatherLocation');
+            if (savedLocation && locations[savedLocation]) {
+                currentLocation = savedLocation;
+                document.getElementById('location-select').value = savedLocation;
+            }
+
+            // 地域選択のイベントリスナー
+            document.getElementById('location-select').addEventListener('change', onLocationChange);
+
+            updateDateTime();
+            fetchWeather();
+            // 日時は毎秒更新
+            setInterval(updateDateTime, 1000);
+            // 天気は10分ごとに更新
+            setInterval(fetchWeather, 600000);
+        });
     </script>
 </body>
 </html>

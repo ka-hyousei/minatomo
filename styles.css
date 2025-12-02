@@ -98,8 +98,39 @@ body::after {
     gap: 12px;
 }
 
-.weather-location {
+.location-select {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 0.9em;
     font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.location-select:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.location-select:focus {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.location-select option,
+.location-select optgroup {
+    background: #1e3a5f;
+    color: white;
+}
+
+.weather-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .weather-icon {
@@ -597,6 +628,15 @@ footer::before {
         gap: 8px;
     }
 
+    .weather-info {
+        gap: 8px;
+    }
+
+    .location-select {
+        font-size: 0.85em;
+        padding: 3px 6px;
+    }
+
     main {
         padding: 40px 24px;
     }
@@ -684,6 +724,15 @@ footer::before {
 
     .weather-section {
         gap: 6px;
+    }
+
+    .weather-info {
+        gap: 6px;
+    }
+
+    .location-select {
+        font-size: 0.8em;
+        padding: 2px 5px;
     }
 
     .weather-icon {
