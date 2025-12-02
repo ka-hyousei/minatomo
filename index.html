@@ -14,9 +14,32 @@
             </div>
             <div class="weather-section" id="weather-section">
                 <select id="location-select" class="location-select">
-                    <optgroup label="関東">
-                        <option value="nishi-ikebukuro" selected>西池袋公園</option>
-                        <option value="tokyo">東京</option>
+                    <optgroup label="東京23区">
+                        <option value="toshima" selected>豊島区（池袋）</option>
+                        <option value="chiyoda">千代田区</option>
+                        <option value="chuo">中央区</option>
+                        <option value="minato">港区</option>
+                        <option value="shinjuku">新宿区</option>
+                        <option value="bunkyo">文京区</option>
+                        <option value="taito">台東区</option>
+                        <option value="sumida">墨田区</option>
+                        <option value="koto">江東区</option>
+                        <option value="shinagawa">品川区</option>
+                        <option value="meguro">目黒区</option>
+                        <option value="ota">大田区</option>
+                        <option value="setagaya">世田谷区</option>
+                        <option value="shibuya">渋谷区</option>
+                        <option value="nakano">中野区</option>
+                        <option value="suginami">杉並区</option>
+                        <option value="nerima">練馬区</option>
+                        <option value="itabashi">板橋区</option>
+                        <option value="kita">北区</option>
+                        <option value="arakawa">荒川区</option>
+                        <option value="adachi">足立区</option>
+                        <option value="katsushika">葛飾区</option>
+                        <option value="edogawa">江戸川区</option>
+                    </optgroup>
+                    <optgroup label="関東（その他）">
                         <option value="yokohama">横浜</option>
                         <option value="saitama">さいたま</option>
                         <option value="chiba">千葉</option>
@@ -192,27 +215,55 @@
 
         // 地域データ（座標と表示名）
         const locations = {
-            'nishi-ikebukuro': { name: '西池袋公園', lat: 35.7295, lon: 139.7109 },
-            'tokyo': { name: '東京', lat: 35.6762, lon: 139.6503 },
+            // 東京23区
+            'toshima': { name: '豊島区', lat: 35.7295, lon: 139.7109 },
+            'chiyoda': { name: '千代田区', lat: 35.6940, lon: 139.7536 },
+            'chuo': { name: '中央区', lat: 35.6707, lon: 139.7719 },
+            'minato': { name: '港区', lat: 35.6581, lon: 139.7514 },
+            'shinjuku': { name: '新宿区', lat: 35.6938, lon: 139.7036 },
+            'bunkyo': { name: '文京区', lat: 35.7080, lon: 139.7522 },
+            'taito': { name: '台東区', lat: 35.7126, lon: 139.7800 },
+            'sumida': { name: '墨田区', lat: 35.7107, lon: 139.8014 },
+            'koto': { name: '江東区', lat: 35.6729, lon: 139.8173 },
+            'shinagawa': { name: '品川区', lat: 35.6093, lon: 139.7300 },
+            'meguro': { name: '目黒区', lat: 35.6413, lon: 139.6981 },
+            'ota': { name: '大田区', lat: 35.5614, lon: 139.7160 },
+            'setagaya': { name: '世田谷区', lat: 35.6463, lon: 139.6532 },
+            'shibuya': { name: '渋谷区', lat: 35.6640, lon: 139.6982 },
+            'nakano': { name: '中野区', lat: 35.7078, lon: 139.6638 },
+            'suginami': { name: '杉並区', lat: 35.6995, lon: 139.6366 },
+            'nerima': { name: '練馬区', lat: 35.7356, lon: 139.6518 },
+            'itabashi': { name: '板橋区', lat: 35.7512, lon: 139.7090 },
+            'kita': { name: '北区', lat: 35.7528, lon: 139.7373 },
+            'arakawa': { name: '荒川区', lat: 35.7360, lon: 139.7834 },
+            'adachi': { name: '足立区', lat: 35.7747, lon: 139.8045 },
+            'katsushika': { name: '葛飾区', lat: 35.7436, lon: 139.8474 },
+            'edogawa': { name: '江戸川区', lat: 35.7067, lon: 139.8683 },
+            // 関東（その他）
             'yokohama': { name: '横浜', lat: 35.4437, lon: 139.6380 },
             'saitama': { name: 'さいたま', lat: 35.8617, lon: 139.6455 },
             'chiba': { name: '千葉', lat: 35.6073, lon: 140.1063 },
+            // 北海道・東北
             'sapporo': { name: '札幌', lat: 43.0618, lon: 141.3545 },
             'sendai': { name: '仙台', lat: 38.2682, lon: 140.8694 },
+            // 中部
             'nagoya': { name: '名古屋', lat: 35.1815, lon: 136.9066 },
             'niigata': { name: '新潟', lat: 37.9026, lon: 139.0236 },
             'kanazawa': { name: '金沢', lat: 36.5944, lon: 136.6256 },
+            // 関西
             'osaka': { name: '大阪', lat: 34.6937, lon: 135.5023 },
             'kyoto': { name: '京都', lat: 35.0116, lon: 135.7681 },
             'kobe': { name: '神戸', lat: 34.6901, lon: 135.1956 },
+            // 中国・四国
             'hiroshima': { name: '広島', lat: 34.3853, lon: 132.4553 },
             'takamatsu': { name: '高松', lat: 34.3401, lon: 134.0434 },
+            // 九州・沖縄
             'fukuoka': { name: '福岡', lat: 33.5904, lon: 130.4017 },
             'naha': { name: '那覇', lat: 26.2124, lon: 127.6809 }
         };
 
-        // 現在選択中の地域
-        let currentLocation = 'nishi-ikebukuro';
+        // 現在選択中の地域（デフォルト: 豊島区）
+        let currentLocation = 'toshima';
 
         // 日時を更新する関数
         function updateDateTime() {
